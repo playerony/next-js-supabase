@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "check-all": "yarn lint && yarn build && yarn format:check && yarn typecheck && yarn commitlint && yarn stylelint",
+    "check-all": "yarn lint && yarn build && yarn format:check && yarn typecheck && yarn commitlint",
     "commitlint": "commitlint --from=HEAD~1",
     "dev": "next dev",
     "format": "yarn prettier --write",
