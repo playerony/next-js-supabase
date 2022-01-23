@@ -20,11 +20,7 @@ jobs:
       - name: Install yarn
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
-      - name: Run stylelint
-        run: yarn stylelint
       - name: Run lint
         run: yarn lint
       - name: Run typecheck
         run: yarn typecheck
-      - name: Run test
-        run: yarn test:ci
