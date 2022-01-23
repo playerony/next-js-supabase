@@ -7,5 +7,12 @@
 
 .next
 build
+scripts
 coverage
 node_modules
+
+
+next.config.js
+postcss.config.js
+tailwind.config.js
+commitlint.config.js
