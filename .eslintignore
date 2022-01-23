@@ -1,0 +1,11 @@
+*.ttf
+*.css
+*.svg
+*.png
+*.txt
+*.scss
+
+.next
+build
+coverage
+node_modules
