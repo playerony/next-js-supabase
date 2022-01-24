@@ -4,6 +4,9 @@
     "build": "next build",
     "check-all": "yarn lint && yarn build && yarn format:check && yarn typecheck && yarn commitlint",
     "commitlint": "commitlint --from=HEAD~1",
+    "create-component": "plop --plopfile ./scripts/plop/create-component/create-component.js",
+    "create-function": "plop --plopfile ./scripts/plop/create-function/create-function.js",
+    "create-hook": "plop --plopfile ./scripts/plop/create-hook/create-hook.js",
     "dev": "next dev",
     "format": "yarn prettier --write",
     "format:check": "yarn prettier --check",
@@ -20,6 +23,7 @@
     "typecheck": "tsc --noEmit -p . --pretty"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.29.4",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
