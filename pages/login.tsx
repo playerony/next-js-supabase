@@ -1,4 +1,4 @@
-import { loginPage } from '@application/pages';
+import { loginPage } from '@application';
 
 const { Login } = loginPage;
 

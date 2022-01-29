@@ -1,4 +1,4 @@
-import { dashboardPage } from '@application/pages';
+import { dashboardPage } from '@application';
 
 const { Dashboard, getStaticProps } = dashboardPage;
 

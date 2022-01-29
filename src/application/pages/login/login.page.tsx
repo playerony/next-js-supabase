@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 
-import { supabaseInstance } from '@infrastructure';
+import { useUser } from '@utils';
 
 export const Login = (): JSX.Element => {
+  const { login } = useUser();
+
   useEffect(() => {
-    supabaseInstance.auth.signIn({
-      provider: 'github',
-    });
+    login();
   }, []);
 
   return <p>Logging in</p>;

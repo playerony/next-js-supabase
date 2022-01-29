@@ -3,6 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@interfaces": ["./src/interfaces"],
+      "@utils/*": ["./src/utils/*"],
+      "@utils": ["./src/utils"],
       "@application/*": ["./src/application/*"],
       "@application": ["./src/application"],
       "@infrastructure/*": ["./src/infrastructure/*"],
