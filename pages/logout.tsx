@@ -1,4 +1,4 @@
-import { logoutPage } from '@application/pages';
+import { logoutPage } from '@application';
 
 const { Logout } = logoutPage;
 

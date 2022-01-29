@@ -1,15 +1,12 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 
-import { supabaseInstance } from '@infrastructure';
+import { useUser } from '@utils';
 
 export const Logout = (): JSX.Element => {
-  const router = useRouter();
+  const { logout } = useUser();
 
   useEffect(() => {
-    supabaseInstance.auth.signOut().then(() => {
-      router.push('/');
-    });
+    logout();
   }, []);
 
   return <p>Logging out</p>;

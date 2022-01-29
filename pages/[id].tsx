@@ -1,4 +1,4 @@
-import { lessonDetailsPage } from '@application/pages';
+import { lessonDetailsPage } from '@application';
 
 const { LessonDetails, getStaticProps, getStaticPaths } = lessonDetailsPage;
 
