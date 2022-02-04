@@ -6,6 +6,8 @@ declare namespace NodeJS {
   interface ProcessEnv {
     API_ROUTE_SECRET: string;
     STRIPE_SECRET_KEY: string;
+    SUPABASE_SERVICE_KEY: string;
+    STRIPE_SIGNING_SECRET: string;
     NEXT_PUBLIC_STRIPE_KEY: string;
     NEXT_PUBLIC_SUPABASE_URL: string;
     NEXT_PUBLIC_SUPABASE_KEY: string;

@@ -1,8 +1,18 @@
+import axios from 'axios';
+import { loadStripe } from '@stripe/stripe-js';
 import { Stripe } from 'stripe';
+import Link from 'next/link';
 
 import { useUser } from '@utils';
 
 import { IPricingProps } from './pricing.types';
+
+const processSubscription = (planId: string) => async () => {
+  const { data } = await axios.get(`/api/subscription/${planId}`);
+
+  const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+  await stripe?.redirectToCheckout({ sessionId: data.id });
+};
 
 export const Pricing = ({ plans }: IPricingProps): JSX.Element => {
   const { user, login, isLoading } = useUser();
@@ -21,9 +31,15 @@ export const Pricing = ({ plans }: IPricingProps): JSX.Element => {
           </p>
           {!isLoading && (
             <>
-              {shouldShowSubscribeButton && <button>Subscribe</button>}
+              {shouldShowSubscribeButton && (
+                <button onClick={processSubscription(_plan.id)}>Subscribe</button>
+              )}
               {shouldCreateAccountButton && <button onClick={login}>Create Account</button>}
-              {shouldManageSubscriptionButton && <button>Manage Subscription</button>}
+              {shouldManageSubscriptionButton && (
+                <Link href="/dashboard">
+                  <a>Manage Subscription</a>
+                </Link>
+              )}
             </>
           )}
         </div>
