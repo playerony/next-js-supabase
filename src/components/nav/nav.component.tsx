@@ -14,7 +14,7 @@ export const Nav = (): JSX.Element => {
         <a className="ml-2">Pricing</a>
       </Link>
       <Link href={user ? '/logout' : '/login'}>
-        <a className="ml-auto">{user ? 'Login' : 'Logout'}</a>
+        <a className="ml-auto">{!user ? 'Login' : 'Logout'}</a>
       </Link>
     </nav>
   );
