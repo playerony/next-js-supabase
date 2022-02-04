@@ -4,13 +4,34 @@ import { ILesson } from '@interfaces';
 import { ILessonDetailsProps } from './lesson-details.types';
 
 import { supabaseInstance } from '@infrastructure';
+import { useState, useEffect } from 'react';
+import VideoPlayer from 'react-player/youtube';
 
-export const LessonDetails = ({ lesson }: ILessonDetailsProps): JSX.Element => (
-  <div className="lesson-details-wrapper">
-    <h1>{lesson?.title}</h1>
-    <p>{lesson?.description}</p>
-  </div>
-);
+export const LessonDetails = ({ lesson }: ILessonDetailsProps): JSX.Element => {
+  const [videoUrl, setVideoUrl] = useState('');
+
+  const getPremiumContent = async () => {
+    const { data } = await supabaseInstance
+      .from('premium_content')
+      .select('video_url')
+      .eq('id', lesson?.id)
+      .single();
+
+    setVideoUrl(data?.video_url);
+  };
+
+  useEffect(() => {
+    getPremiumContent();
+  }, []);
+
+  return (
+    <div className="lesson-details-wrapper">
+      <h1>{lesson?.title}</h1>
+      <p>{lesson?.description}</p>
+      {videoUrl && <VideoPlayer url={videoUrl} width="100%" />}
+    </div>
+  );
+};
 
 export const getStaticPaths = async () => {
   const { data: lessons } = await supabaseInstance.from<ILesson>('lesson').select('id');
