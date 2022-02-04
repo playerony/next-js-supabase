@@ -5,9 +5,9 @@ export interface IUser extends User {
 }
 
 export interface IUserContextValue {
-  user: IUser | null;
   isLoading: boolean;
-
   login: () => void;
+
   logout: () => void;
+  user: IUser | null;
 }

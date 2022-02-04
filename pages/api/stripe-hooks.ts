@@ -1,6 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { buffer } from 'micro';
-
+import { NextApiRequest, NextApiResponse } from 'next';
 import { Stripe } from 'stripe';
 
 import { getServiceSupabase } from '@infrastructure';
@@ -13,6 +12,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
   const signature = request.headers['stripe-signature'];
   const requestBuffer = await buffer(request);
+
   if (!signature) {
     response.send({ received: true });
 
@@ -38,6 +38,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
           // @ts-expect-error
           .eq('stripe_customer', event.data.object.customer);
         break;
+
       default:
         break;
     }

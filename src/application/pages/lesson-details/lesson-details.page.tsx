@@ -1,11 +1,12 @@
 import { GetStaticPropsContext } from 'next';
-
-import { ILesson } from '@interfaces';
-import { ILessonDetailsProps } from './lesson-details.types';
+import { useEffect, useState } from 'react';
+import VideoPlayer from 'react-player/youtube';
 
 import { supabaseInstance } from '@infrastructure';
-import { useState, useEffect } from 'react';
-import VideoPlayer from 'react-player/youtube';
+
+import { ILesson } from '@interfaces';
+
+import { ILessonDetailsProps } from './lesson-details.types';
 
 export const LessonDetails = ({ lesson }: ILessonDetailsProps): JSX.Element => {
   const [videoUrl, setVideoUrl] = useState('');

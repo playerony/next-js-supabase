@@ -3,5 +3,21 @@
   "useTabs": false,
   "printWidth": 100,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@application",
+    "^@application/(.*)$",
+    "^@components",
+    "^@components/(.*)$",
+    "^@utils",
+    "^@utils/(.*)$",
+    "^@infrastructure",
+    "^@infrastructure/(.*)$",
+    "^@interfaces",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": true
 }

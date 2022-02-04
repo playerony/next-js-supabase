@@ -1,6 +1,6 @@
 import { lessonDetailsPage } from '@application';
 
-const { LessonDetails, getStaticProps, getStaticPaths } = lessonDetailsPage;
+const { getStaticPaths, getStaticProps, LessonDetails } = lessonDetailsPage;
 
 // eslint-disable-next-line no-restricted-exports
 export { LessonDetails as default, getStaticProps, getStaticPaths };
