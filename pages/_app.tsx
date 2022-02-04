@@ -1,15 +1,6 @@
-import type { AppProps } from 'next/app';
-
-import { UserProvider } from '@application';
-
 import '@infrastructure/styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <UserProvider>
-      <Component {...pageProps} />
-    </UserProvider>
-  );
-}
+import { App } from '@application';
 
-export default MyApp;
+// eslint-disable-next-line unicorn/prefer-export-from
+export default App;

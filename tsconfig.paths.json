@@ -5,6 +5,8 @@
       "@interfaces": ["./src/interfaces"],
       "@utils/*": ["./src/utils/*"],
       "@utils": ["./src/utils"],
+      "@components/*": ["./src/components/*"],
+      "@components": ["./src/components"],
       "@application/*": ["./src/application/*"],
       "@application": ["./src/application"],
       "@infrastructure/*": ["./src/infrastructure/*"],
