@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
-import { supabaseInstance, UserContext } from '@infrastructure';
+import { IUser, supabaseInstance, UserContext } from '@infrastructure';
 
 import { IUserProviderProps } from './user-provider.types';
 
 export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
   const router = useRouter();
-  const [user, setUser] = useState(supabaseInstance.auth.user());
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<IUser | null>(supabaseInstance.auth.user());
 
   const getUserProfile = async () => {
     const sessionUser = supabaseInstance.auth.user();
@@ -23,6 +24,8 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
         ...sessionUser,
         ...profile,
       });
+
+      setIsLoading(false);
     }
   };
 
@@ -49,6 +52,7 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
     user,
     login,
     logout,
+    isLoading,
   };
 
   return <UserContext.Provider value={providerValue}>{children}</UserContext.Provider>;
