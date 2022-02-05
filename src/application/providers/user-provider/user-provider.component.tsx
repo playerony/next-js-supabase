@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
-import { IUser, supabaseInstance, UserContext } from '@infrastructure';
+import { IUser, UserContext, supabaseInstance } from '@infrastructure';
 
 import { IUserProviderProps } from './user-provider.types';
 

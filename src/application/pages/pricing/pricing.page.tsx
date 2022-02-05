@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
-import { Stripe } from 'stripe';
+import axios from 'axios';
 import Link from 'next/link';
+import { Stripe } from 'stripe';
 
 import { useUser } from '@utils';
 
@@ -11,11 +11,12 @@ const processSubscription = (planId: string) => async () => {
   const { data } = await axios.get(`/api/subscription/${planId}`);
 
   const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+
   await stripe?.redirectToCheckout({ sessionId: data.id });
 };
 
 export const Pricing = ({ plans }: IPricingProps): JSX.Element => {
-  const { user, login, isLoading } = useUser();
+  const { isLoading, login, user } = useUser();
 
   const shouldCreateAccountButton = !user;
   const shouldShowSubscribeButton = !!user && !user.is_subscribed;

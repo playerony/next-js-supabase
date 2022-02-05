@@ -1,6 +1,6 @@
 import { pricingPage } from '@application';
 
-const { Pricing, getStaticProps } = pricingPage;
+const { getStaticProps, Pricing } = pricingPage;
 
 // eslint-disable-next-line no-restricted-exports
 export { Pricing as default, getStaticProps };

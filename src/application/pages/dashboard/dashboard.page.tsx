@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
-import { ILesson } from '@interfaces';
-import { IDashboardProps } from './dashboard.types';
-
 import { supabaseInstance } from '@infrastructure';
+
+import { ILesson } from '@interfaces';
+
+import { IDashboardProps } from './dashboard.types';
 
 export const Dashboard = ({ lessons }: IDashboardProps): JSX.Element => (
   <div className="w-full max-w-3xl mx-auto my-16 px-2">

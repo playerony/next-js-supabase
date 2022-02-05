@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/filename-case */
-import { Stripe } from 'stripe';
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { Stripe } from 'stripe';
 
 import { supabaseInstance } from '@infrastructure';
 
@@ -9,6 +9,7 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
+
   if (!user) {
     response.status(401).send('Unauthorized');
 
@@ -16,6 +17,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   }
 
   const token = cookie.parse(request.headers.cookie || '')['sb:token'];
+
   supabaseInstance.auth.session = () => ({
     user,
     token_type: '',
