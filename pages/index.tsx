@@ -1,6 +1,6 @@
-import { dashboardPage } from '@application';
+import { homePage } from '@application';
 
-const { Dashboard, getStaticProps } = dashboardPage;
+const { getStaticProps, Home } = homePage;
 
 // eslint-disable-next-line no-restricted-exports
-export { Dashboard as default, getStaticProps };
+export { Home as default, getStaticProps };

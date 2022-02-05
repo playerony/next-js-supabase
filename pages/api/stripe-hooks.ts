@@ -27,13 +27,24 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     );
 
     switch (event.type) {
-      case 'customer.subscription.created':
+      case 'customer.subscription.updated':
         await getServiceSupabase()
           .from('profile')
           .update({
             is_subscribed: true,
             // @ts-expect-error
             interval: event.data.object.items.data[0].plan.interval,
+          })
+          // @ts-expect-error
+          .eq('stripe_customer', event.data.object.customer);
+        break;
+
+      case 'customer.subscription.deleted':
+        await getServiceSupabase()
+          .from('profile')
+          .update({
+            interval: null,
+            is_subscribed: false,
           })
           // @ts-expect-error
           .eq('stripe_customer', event.data.object.customer);

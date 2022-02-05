@@ -1,6 +1,7 @@
 import { User } from '@supabase/supabase-js';
 
 export interface IUser extends User {
+  interval?: boolean;
   is_subscribed?: boolean;
 }
 

@@ -1,5 +1,5 @@
 import { ILesson } from '@interfaces';
 
-export interface IDashboardProps {
+export interface IHomeProps {
   lessons: ILesson[] | null;
 }
