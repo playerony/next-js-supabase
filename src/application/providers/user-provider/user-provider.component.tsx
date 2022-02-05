@@ -45,6 +45,21 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
     });
   }, [user]);
 
+  useEffect(() => {
+    if (user) {
+      const subscription = supabaseInstance
+        .from(`profile:id=eq.${user.id}`)
+        .on('UPDATE', (payload) => {
+          setUser({ ...user, ...payload.new });
+        })
+        .subscribe();
+
+      return () => {
+        supabaseInstance.removeSubscription(subscription);
+      };
+    }
+  }, [user]);
+
   const login = () =>
     supabaseInstance.auth.signIn({
       provider: 'github',
