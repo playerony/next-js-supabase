@@ -37,7 +37,6 @@ module.exports = {
           { blankLine: 'always', prev: 'directive', next: '*' },
           { blankLine: 'any', prev: 'directive', next: 'directive' },
           { blankLine: 'always', prev: ['case', 'default'], next: '*' },
-          { blankLine: 'any', prev: ['break'], next: ['case', 'default'] },
           { blankLine: 'always', prev: 'if', next: '*' },
         ],
         'implicit-arrow-linebreak': 'off',
